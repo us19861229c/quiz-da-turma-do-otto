@@ -1,8 +1,15 @@
 module.exports = {
-  purge: [],
+  purge: [
+    './public/index.html',
+  ],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    colors: {},
+    colors: {
+      livrosClara: '#dbf6f3',
+      azul1: '#dbf0f3',
+      roxoSuper: '#ae56ff',
+      preto5: '#595a5c',
+    },
     fontFamily: {
       sans: ['Poppins', 'sans-serif'],
     },
