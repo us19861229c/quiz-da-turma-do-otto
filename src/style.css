@@ -1,0 +1,10 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.div-resposta {
+  @apply m-2.5 p-2.5
+    border border-solid border-preto5
+    cursor-pointer
+    hover:border-roxoSuper hover:text-roxoSuper;
+}
