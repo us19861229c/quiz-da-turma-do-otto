@@ -1,0 +1,51 @@
+:root {
+  --livros: '#45d0c1';
+  --livrosClara: '#dbf6f3';
+  --livrosEscura: '#9be6de';
+
+  --atualidades: '#96dd48';
+  --atualidadesClara: '#ebf9db';
+  --atualidadesEscura: '#c7ed9e';
+  
+  --azul1: '#dbf0f3';
+  --azul2: '#9bd5de';
+  --azul3: '#44b0c1';
+
+  --preto6: '#2d2d2e';
+  --preto5: '#595a5c';
+  --preto4: '#86878b';
+  --preto3: '#b2b4b9';
+  --preto2: '#dee1e6';
+
+  --vermelho3: '#f95050';
+  --vermelho2: '#ffa4a4';
+  --vermelho1: '#fef2f2';
+
+  --roxo3: '#a97ed1';
+  --roxo2: '#d6baf1';
+  --roxo1: '#f7edff';
+  --roxoSuper: '#ae56ff';
+
+  
+  --laranjaSuper: '#ff995a';
+  --laranja3: '#ffa17c';
+  --laranja2: '#ffd8c9';
+  --laranja1: '#fff5f1';
+
+  --ariel3: '#24a57c';
+  --ariel2: '#a3e0cd';
+  --ariel1: '#e4ffee';
+
+  --amarelo3: '#ffc517';
+  --amarelo2: '#ffe3b1';
+  --amarelo1: '#fff8ec';
+
+  --branco: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+ }
