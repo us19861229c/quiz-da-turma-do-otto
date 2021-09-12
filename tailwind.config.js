@@ -4,16 +4,17 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    colors: {
-      livrosClara: '#dbf6f3',
-      azul1: '#dbf0f3',
-      roxoSuper: '#ae56ff',
-      preto5: '#595a5c',
-    },
     fontFamily: {
       sans: ['Poppins', 'sans-serif'],
     },
-    extend: {},
+    extend: {
+      colors: {
+        livros: '#45d0c1',
+        ariel3: '#24a57c',
+        preto6: '#2d2d2e',
+        preto5: '#595a5c',
+      },
+    },
   },
   variants: {
     extend: {},

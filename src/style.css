@@ -2,9 +2,13 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-.div-resposta {
-  @apply m-2.5 p-2.5
-    border border-solid border-preto5
+.opcao-resposta {
+  @apply block m-2.5 p-2.5
+    border border-solid border-preto5 rounded
     cursor-pointer
-    hover:border-roxoSuper hover:text-roxoSuper;
+    hover:border-ariel3 hover:text-ariel3 hover:underline;
+}
+
+input {
+  @apply sr-only;
 }
