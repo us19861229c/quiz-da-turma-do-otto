@@ -13,15 +13,16 @@
 </head>
 
 <body class="antialiased text-preto6 bg-gray-100">
-  <div class="flex flex-col w-full justify-center items-center">
+  <div class="flex flex-col justify-center items-center">
     <div class="w-full max-w-xl p-3">
-      <header class="text-center my-12 break-words">
+      <header class="text-center break-words">
         <h1 class="text-6xl font-bold text-livros">Teste de Personalidade</h1>
         <h2 class="text-4xl">Quem é você na turma do Otto?</h2>
+        <button class="text-white bg-livros hover:bg-ariel3 transition-all rounded font-bold py-3 px-4">Iniciar</button>
       </header>
-      <section class="rounded-xl shadow overflow-hidden bg-gray-50 p-4">
-        <h2 class="text-xl font-bold m-2.5">Na sua turma você é:</h2>
-        <div class="container-respostas">
+      <section class="rounded-xl shadow overflow-hidden bg-gray-50">
+        <h2 class="text-xl font-bold m-2.5 p-4">Na sua turma você é:</h2>
+        <div class="container-respostas px-4">
           <label for="p1-a" class="opcao-resposta">
             <input id="p1-a" type="radio" name="pergunta-1">
             Aquela pessoa que não pára quieta
@@ -38,6 +39,10 @@
             <input id="p1-d" type="radio" name="pergunta-1">
             A pessoa que vive no mundo da lua
           </label>
+        </div>
+        <div class="rodape-pergunta bg-gray-100 text-right mt-6 py-4 px-6 border-t border-solid border-gray-200">
+          <button class="text-white bg-livros transition-all disabled:opacity-60 rounded font-bold py-3 px-4"
+            disabled="disabled">Avançar</button>
         </div>
       </section>
       <section class="rounded-xl shadow overflow-hidden bg-gray-50 p-4">
