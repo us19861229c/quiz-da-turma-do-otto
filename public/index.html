@@ -9,168 +9,175 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://unpkg.com/alpinejs" defer></script>
 </head>
 
 <body class="antialiased text-preto6 bg-gray-100">
-  <div class="flex flex-col justify-center items-center">
-    <div class="w-full max-w-xl p-3">
-      <header class="text-center break-words">
+  <div class="flex flex-col justify-center items-center h-screen">
+    <div class="w-full max-w-xl p-3"
+      x-data="{ passo0: true, passo1: false, passo2: false, passo3: false, passo4: false, passo5: false, passo6: false, passo7: false, passo8:false }">
+      <header class="flex flex-col text-center items-center break-words" x-show="passo0">
         <h1 class="text-6xl font-bold text-livros">Teste de Personalidade</h1>
         <h2 class="text-4xl">Quem é você na turma do Otto?</h2>
-        <button class="text-white bg-livros hover:bg-ariel3 transition-all rounded font-bold py-3 px-4">Iniciar</button>
+        <button @click="passo1 = true; passo0 = false"
+          class="text-white bg-livros hover:bg-ariel3 transition-all rounded font-bold py-3 px-4">Iniciar</button>
       </header>
-      <section class="rounded-xl shadow overflow-hidden bg-gray-50">
+
+      <section class="rounded-xl shadow overflow-hidden bg-gray-50" x-show="passo1" x-data="{escolha1:''}">
         <h2 class="text-xl font-bold m-2.5 p-4">Na sua turma você é:</h2>
-        <div class="container-respostas px-4">
-          <label for="p1-a" class="opcao-resposta">
-            <input id="p1-a" type="radio" name="pergunta-1">
-            Aquela pessoa que não pára quieta
-          </label>
-          <label for="p1-b" class="opcao-resposta">
-            <input id="p1-b" type="radio" name="pergunta-1">
-            A tranquilidade em forma de gente
-          </label>
-          <label for="p1-c" class="opcao-resposta">
-            <input id="p1-c" type="radio" name="pergunta-1">
-            Boquinha nervosa, se não tiver lanche nem me chame!
-          </label>
-          <label for="p1-d" class="opcao-resposta">
-            <input id="p1-d" type="radio" name="pergunta-1">
-            A pessoa que vive no mundo da lua
-          </label>
+        <div class="container-respostas px-4" x-data="{respostas:[
+            {valor: 'a', texto: 'Aquela pessoa que não pára quieta'},
+            {valor: 'b', texto: 'A tranquilidade em forma de gente'},
+            {valor: 'c', texto: 'Boquinha nervosa, se não tiver lanche nem me chame!'},
+            {valor: 'd', texto: 'A pessoa que vive no mundo da lua'},
+          ],
+        }">
+          <template x-for="(resposta, index) in respostas" :key="index">
+            <label class="opcao-resposta" :class="{'active': escolha1 === resposta.valor }">
+              <input type="radio" :value="resposta.valor" x-model="escolha1">
+              <span x-text="resposta.texto"></span>
+            </label>
+          </template>
         </div>
         <div class="rodape-pergunta bg-gray-100 text-right mt-6 py-4 px-6 border-t border-solid border-gray-200">
-          <button class="text-white bg-livros transition-all disabled:opacity-60 rounded font-bold py-3 px-4"
-            disabled="disabled">Avançar</button>
+          <button @click="passo2 = true; passo1 = false"
+            class="text-white bg-livros transition-all disabled:opacity-60 rounded font-bold py-3 px-4">Avançar</button>
         </div>
       </section>
-      <section class="rounded-xl shadow overflow-hidden bg-gray-50 p-4">
-        <h2 class="text-xl font-bold m-2.5">Pra curtir suas férias:</h2>
-        <div class="container-respostas">
-          <label for="p2-d" class="opcao-resposta">
-            <input id="p2-d" type="radio" name="pergunta-2">
-            Chalézinho, lareira e aquele friozinho bom
-          </label>
-          <label for="p2-a" class="opcao-resposta">
-            <input id="p2-a" type="radio" name="pergunta-2">
-            Meu melhor tênis e eu amamos uma trilha
-          </label>
-          <label for="p2-b" class="opcao-resposta">
-            <input id="p2-b" type="radio" name="pergunta-2">
-            Museu e visitas à centros históricos!
-          </label>
-          <label for="p2-c" class="opcao-resposta">
-            <input id="p2-c" type="radio" name="pergunta-2">
-            Feiras de tecnologia, aí vou eu!
-          </label>
+
+      <section class="rounded-xl shadow overflow-hidden bg-gray-50" x-show="passo2" x-data="{escolha2:''}">
+        <h2 class="text-xl font-bold m-2.5 p-4">Pra curtir suas férias:</h2>
+        <div class="container-respostas px-4" x-data="{respostas:[
+            {valor: 'd', texto: 'Chalézinho, lareira e aquele friozinho bom'},
+            {valor: 'a', texto: 'Meu melhor tênis e eu amamos uma trilha'},
+            {valor: 'b', texto: 'Museu e visitas à centros históricos!'},
+            {valor: 'c', texto: 'Feiras de tecnologia, aí vou eu!'},
+          ],
+        }">
+          <template x-for="(resposta, index) in respostas" :key="index">
+            <label class="opcao-resposta" :class="{'active': escolha2 === resposta.valor }">
+              <input type="radio" :value="resposta.valor" x-model="escolha2">
+              <span x-text="resposta.texto"></span>
+            </label>
+          </template>
+        </div>
+        <div class="rodape-pergunta bg-gray-100 text-right mt-6 py-4 px-6 border-t border-solid border-gray-200">
+          <button @click="passo3 = true; passo2 = false"
+            class="text-white bg-livros transition-all disabled:opacity-60 rounded font-bold py-3 px-4">Avançar</button>
         </div>
       </section>
-      <section class="rounded-xl shadow overflow-hidden bg-gray-50 p-4">
-        <h2 class="text-xl font-bold m-2.5">Na feira do livro:</h2>
-        <div class="container-respostas">
-          <label for="p3-b" class="opcao-resposta">
-            <input id="p3-b" type="radio" name="pergunta-3">
-            Pode me procurar entre as biografias!
-          </label>
-          <label for="p3-c" class="opcao-resposta">
-            <input id="p3-c" type="radio" name="pergunta-3">
-            Tolkien, CS Lewis e Neil Gaiman são meus companheiros!
-          </label>
-          <label for="p3-d" class="opcao-resposta">
-            <input id="p3-d" type="radio" name="pergunta-3">
-            Ah, Como eu era antes de você. Tão romântico!
-          </label>
-          <label for="p3-a" class="opcao-resposta">
-            <input id="p3-a" type="radio" name="pergunta-3">
-            Icem as velas e se preparem pra me encontrar na sessão de Aventuras!
-          </label>
+
+      <section class="rounded-xl shadow overflow-hidden bg-gray-50" x-show="passo3" x-data="{escolha3:''}">
+        <h2 class="text-xl font-bold m-2.5 p-4">Na feira do livro:</h2>
+        <div class="container-respostas px-4" x-data="{respostas:[
+            {valor: 'b', texto: 'Pode me procurar entre as biografias!'},
+            {valor: 'c', texto: 'Tolkien, CS Lewis e Neil Gaiman são meus companheiros!'},
+            {valor: 'd', texto: 'Ah, Como eu era antes de você. Tão romântico!'},
+            {valor: 'a', texto: 'Icem as velas e se preparem pra me encontrar na sessão de Aventuras!'},
+          ],
+        }">
+          <template x-for="(resposta, index) in respostas" :key="index">
+            <label class="opcao-resposta" :class="{'active': escolha3 === resposta.valor }">
+              <input type="radio" :value="resposta.valor" x-model="escolha3">
+              <span x-text="resposta.texto"></span>
+            </label>
+          </template>
+        </div>
+        <div class="rodape-pergunta bg-gray-100 text-right mt-6 py-4 px-6 border-t border-solid border-gray-200">
+          <button @click="passo4 = true; passo3 = false"
+            class="text-white bg-livros transition-all disabled:opacity-60 rounded font-bold py-3 px-4">Avançar</button>
         </div>
       </section>
-      <section class="rounded-xl shadow overflow-hidden bg-gray-50 p-4">
-        <h2 class="text-xl font-bold m-2.5">O que você indicaria no Sementindica?</h2>
-        <div class="container-respostas">
-          <label for="p4-c" class="opcao-resposta">
-            <input id="p4-c" type="radio" name="pergunta-4">
-            Vamos de E-Sports, já já crio um servidor pra gente!
-          </label>
-          <label for="p4-a" class="opcao-resposta">
-            <input id="p4-a" type="radio" name="pergunta-4">
-            Se fizer sol, que tal o combo Surf & Skate?
-          </label>
-          <label for="p4-b" class="opcao-resposta">
-            <input id="p4-b" type="radio" name="pergunta-4">
-            Tem uns cursos gratuitos excelentes pra fazermos!
-          </label>
-          <label for="p4-d" class="opcao-resposta">
-            <input id="p4-d" type="radio" name="pergunta-4">
-            O casal sorvete e comédia romântica nunca saem de moda, né?
-          </label>
+
+      <section class="rounded-xl shadow overflow-hidden bg-gray-50" x-show="passo4" x-data="{escolha4:''}">
+        <h2 class="text-xl font-bold m-2.5 p-4">O que você indicaria no Sementindica?</h2>
+        <div class="container-respostas px-4" x-data="{respostas:[
+            {valor: 'c', texto: 'Vamos de E-Games, já já crio um servidor pra gente!'},
+            {valor: 'a', texto: 'Se fizer sol, que tal o combo Surf & Skate?'},
+            {valor: 'b', texto: 'Tem uns cursos gratuitos excelentes pra fazermos nesse fim de semana!'},
+            {valor: 'd', texto: 'O casal sorvete e comédia romântica nunca saem de moda, né?'},
+          ],
+        }">
+          <template x-for="(resposta, index) in respostas" :key="index">
+            <label class="opcao-resposta" :class="{'active': escolha4 === resposta.valor }">
+              <input type="radio" :value="resposta.valor" x-model="escolha4">
+              <span x-text="resposta.texto"></span>
+            </label>
+          </template>
+        </div>
+        <div class="rodape-pergunta bg-gray-100 text-right mt-6 py-4 px-6 border-t border-solid border-gray-200">
+          <button @click="passo5 = true; passo4 = false"
+            class="text-white bg-livros transition-all disabled:opacity-60 rounded font-bold py-3 px-4">Avançar</button>
         </div>
       </section>
-      <section class="rounded-xl shadow overflow-hidden bg-gray-50 p-4">
-        <h2 class="text-xl font-bold m-2.5">E vai querer o que pra o lanche?</h2>
-        <div class="container-respostas">
-          <label for="p5-c" class="opcao-resposta">
-            <input id="p5-c" type="radio" name="pergunta-5">
-            Hamburgão! Hamburgão! Hamburgão!
-          </label>
-          <label for="p5-a" class="opcao-resposta">
-            <input id="p5-a" type="radio" name="pergunta-5">
-            Um sanduíche natural, rápido, leve e saudável
-          </label>
-          <label for="p5-d" class="opcao-resposta">
-            <input id="p5-d" type="radio" name="pergunta-5">
-            Um chocolate quente bem cremoso, por favor.
-          </label>
-          <label for="p5-b" class="opcao-resposta">
-            <input id="p5-b" type="radio" name="pergunta-5">
-            Aceito sushi, mas dispenso o hashi, tenho o meu sustentável.
-          </label>
+
+      <section class="rounded-xl shadow overflow-hidden bg-gray-50" x-show="passo5" x-data="{escolha5:''}">
+        <h2 class="text-xl font-bold m-2.5 p-4">E vai querer o que pra o lanche?</h2>
+        <div class="container-respostas px-4" x-data="{respostas:[
+            {valor: 'd', texto: 'Um chocolate quente bem cremoso, por favor'},
+            {valor: 'a', texto: 'Um sanduíche natural, rápido, leve e saudável'},
+            {valor: 'c', texto: 'Hamburgão! Hamburgão! Hamburgão!'},
+            {valor: 'b', texto: 'Aceito sushi, mas dispenso o hashi, tenho o meu sustentável.'},
+          ],
+        }">
+          <template x-for="(resposta, index) in respostas" :key="index">
+            <label class="opcao-resposta" :class="{'active': escolha5 === resposta.valor }">
+              <input type="radio" :value="resposta.valor" x-model="escolha5">
+              <span x-text="resposta.texto"></span>
+            </label>
+          </template>
+        </div>
+        <div class="rodape-pergunta bg-gray-100 text-right mt-6 py-4 px-6 border-t border-solid border-gray-200">
+          <button @click="passo6 = true; passo5 = false"
+            class="text-white bg-livros transition-all disabled:opacity-60 rounded font-bold py-3 px-4">Avançar</button>
         </div>
       </section>
-      <section class="rounded-xl shadow overflow-hidden bg-gray-50 p-4">
-        <h2 class="text-xl font-bold m-2.5">Xi! Faltou energia!:</h2>
-        <div class="container-respostas">
-          <label for="p6-d" class="opcao-resposta">
-            <input id="p6-d" type="radio" name="pergunta-6">
-            Ah, vamos ter um jantar à luz de velas!
-          </label>
-          <label for="p6-c" class="opcao-resposta">
-            <input id="p6-c" type="radio" name="pergunta-6">
-            Ai que medo, alguém segura a minha mão?
-          </label>
-          <label for="p6-a" class="opcao-resposta">
-            <input id="p6-a" type="radio" name="pergunta-6">
-            Que demais! Agora sim é hora de explorar o porão!
-          </label>
-          <label for="p6-b" class="opcao-resposta">
-            <input id="p6-b" type="radio" name="pergunta-6">
-            Calma, eu tenho uma lanterna. Deve haver uma boa explicação para isso.
-          </label>
+
+      <section class="rounded-xl shadow overflow-hidden bg-gray-50" x-show="passo6" x-data="{escolha6:''}">
+        <h2 class="text-xl font-bold m-2.5 p-4">Xi! Faltou energia!</h2>
+        <div class="container-respostas px-4" x-data="{respostas:[
+            {valor: 'c', texto: 'Ai que medo, alguém segura a minha mão?'},
+            {valor: 'a', texto: 'Que demais! Agora sim é hora de explorar o porão!'},
+            {valor: 'd', texto: 'Ah, vamos ter um jantar à luz de velas!'},
+            {valor: 'b', texto: 'Calma, eu tenho uma lanterna. Deve haver uma boa explicação para isso.'},
+          ],
+        }">
+          <template x-for="(resposta, index) in respostas" :key="index">
+            <label class="opcao-resposta" :class="{'active': escolha6 === resposta.valor }">
+              <input type="radio" :value="resposta.valor" x-model="escolha6">
+              <span x-text="resposta.texto"></span>
+            </label>
+          </template>
+        </div>
+        <div class="rodape-pergunta bg-gray-100 text-right mt-6 py-4 px-6 border-t border-solid border-gray-200">
+          <button @click="passo7 = true; passo6 = false"
+            class="text-white bg-livros transition-all disabled:opacity-60 rounded font-bold py-3 px-4">Avançar</button>
         </div>
       </section>
-      <section class="rounded-xl shadow overflow-hidden bg-gray-50 p-4">
-        <h2 class="text-xl font-bold m-2.5">Por fim, qual sua matéria preferida na escola?</h2>
-        <div class="container-respostas">
-          <label for="p7-b" class="opcao-resposta">
-            <input id="p7-b" type="radio" name="pergunta-7">
-            Ciências biológicas
-          </label>
-          <label for="p7-c" class="opcao-resposta">
-            <input id="p7-c" type="radio" name="pergunta-7">
-            Matemática
-          </label>
-          <label for="p7-d" class="opcao-resposta">
-            <input id="p7-d" type="radio" name="pergunta-7">
-            Literatura
-          </label>
-          <label for="p7-a" class="opcao-resposta">
-            <input id="p7-a" type="radio" name="pergunta-7">
-            Geografia
-          </label>
+
+      <section class="rounded-xl shadow overflow-hidden bg-gray-50" x-show="passo7" x-data="{escolha7:''}">
+        <h2 class="text-xl font-bold m-2.5 p-4">Por fim, qual sua matéria preferida na escola?</h2>
+        <div class="container-respostas px-4" x-data="{respostas:[
+            {valor: 'b', texto: 'Ciências'},
+            {valor: 'd', texto: 'Língua portuguesa'},
+            {valor: 'c', texto: 'Matemática'},
+            {valor: 'a', texto: 'Geografia'},
+          ],
+        }">
+          <template x-for="(resposta, index) in respostas" :key="index">
+            <label class="opcao-resposta" :class="{'active': escolha7 === resposta.valor }">
+              <input type="radio" :value="resposta.valor" x-model="escolha7">
+              <span x-text="resposta.texto"></span>
+            </label>
+          </template>
+        </div>
+        <div class="rodape-pergunta bg-gray-100 text-right mt-6 py-4 px-6 border-t border-solid border-gray-200">
+          <button @click="passo8 = true; passo7 = false"
+            class="text-white bg-livros transition-all disabled:opacity-60 rounded font-bold py-3 px-4">Avançar</button>
         </div>
       </section>
+
     </div>
   </div>
 </body>

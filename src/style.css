@@ -4,9 +4,13 @@
 
 .opcao-resposta {
   @apply block m-2.5 p-2.5
-    border border-solid border-preto5 rounded
+    border rounded
     cursor-pointer
     hover:border-ariel3 hover:text-ariel3 hover:underline;
+}
+
+.opcao-resposta.active {
+  @apply border-ariel3 text-ariel3;
 }
 
 input {

@@ -12,7 +12,6 @@ module.exports = {
         livros: '#45d0c1',
         ariel3: '#24a57c',
         preto6: '#2d2d2e',
-        preto5: '#595a5c',
       },
     },
   },
