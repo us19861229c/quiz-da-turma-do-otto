@@ -36,7 +36,7 @@
             </template>
           </div>
           <div class="rodape-pergunta bg-gray-100 text-right mt-6 py-4 px-6 border-t border-solid border-gray-200">
-            <button @click="$store.resultado.adicionar(escolha)"
+            <button @click="$store.escolhas.listaDeEscolhas[i] = escolha"
               class="text-white bg-livros transition-all disabled:opacity-60 rounded font-bold py-3 px-4"
               :disabled="!escolha">Avançar</button>
           </div>
@@ -113,11 +113,11 @@
       }
     ]
     document.addEventListener('alpine:init', () => {
-      Alpine.store('resultado', {
-        somatorio: [],
+      Alpine.store('escolhas', {
+        listaDeEscolhas: {},
 
-        adicionar(escolha) {
-          this.somatorio.push(escolha)
+        adicionar(i, escolha) {
+          this.listaDeEscolhas[i] = escolha
         }
       })
     })
