@@ -37,7 +37,8 @@
           </div>
           <div class="rodape-pergunta bg-gray-100 text-right mt-6 py-4 px-6 border-t border-solid border-gray-200">
             <button @click="$store.resultado.adicionar(escolha)"
-              class="text-white bg-livros transition-all disabled:opacity-60 rounded font-bold py-3 px-4">Avançar</button>
+              class="text-white bg-livros transition-all disabled:opacity-60 rounded font-bold py-3 px-4"
+              :disabled="!escolha">Avançar</button>
           </div>
         </section>
       </template>
