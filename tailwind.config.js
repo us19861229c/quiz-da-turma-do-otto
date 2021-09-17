@@ -13,6 +13,10 @@ module.exports = {
         ariel3: '#24a57c',
         preto6: '#2d2d2e',
       },
+      backgroundImage: {
+        'arvores': "url('./img/FundoArvoresNuvemTransparente.png')",
+        'nuvens': "url('./img/FundoNuvensTransparente.png')",
+      }
     },
   },
   variants: {

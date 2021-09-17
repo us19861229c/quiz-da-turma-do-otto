@@ -14,8 +14,9 @@
 </head>
 
 <body class="antialiased text-preto6 bg-gray-100">
-  <div class="flex flex-col justify-center items-center h-screen">
-    <div class="w-full max-w-xl p-3" x-data="{itens, passo: 0, resultado: ''}">
+  <div class="flex flex-col justify-center items-center h-screen bg-no-repeat bg-contain"
+    :class="passo === 8 ? 'bg-arvores':'bg-nuvens'" x-data="{itens, passo: 0, resultado:  $store.escolhas.resultado()}">
+    <div class="w-full max-w-xl p-3">
       <header class="flex flex-col text-center items-center break-words" x-ref="inicio" x-show="passo === 0 ">
         <h1 class="text-6xl font-bold text-livros">Teste de Personalidade</h1>
         <h2 class="text-4xl">Quem é você na turma do Otto?</h2>
@@ -45,6 +46,21 @@
         </section>
       </template>
 
+      <section class="rounded-xl text-center shadow overflow-hidden bg-gray-50" x-cloak x-show="passo === 8">
+        <div class="py-4 px-6 border-t border-solid border-gray-200 flex justify-center"
+          :style="`background-color: ${resultado.corFundo}`">
+          <img :src="resultado.avatar" :style="`border-color: ${resultado.corBorda}`"
+            class="border-8 shadow-md rounded-full h-48 w-48" alt="insignia com imagem do mascote">
+        </div>
+        <div class="p-4">
+          <h2> você é <span x-text="resultado.nome" class="font-extrabold px-2 text-2xl tracking-widest"
+              :style="`background-color: ${resultado.corBorda}`"></span>
+          </h2>
+          <h3 class="italic my-5 text-gray-800"><span x-text="resultado.titulo" class="px-4"
+              :style="`background-color: ${resultado.corBorda};`"></span></h3>
+          <p x-text="resultado.bio"></p>
+        </div>
+      </section>
     </div>
   </div>
 
@@ -153,6 +169,7 @@
         corFundo: '#D6EFF9',
       },
     ]
+
     document.addEventListener('alpine:init', () => {
       Alpine.store('escolhas', {
         listaDeEscolhas: {},
@@ -174,7 +191,6 @@
           })
 
           return mascotes.filter(mascote => mascote.id === chavesObjetos[0])[0]
-
         },
       })
     })
