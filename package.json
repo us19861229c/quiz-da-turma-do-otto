@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "NODE_ENV=production npx tailwindcss -i ./src/style.css -o ./public/style.css --minify",
-    "dev": "NODE_ENV=production npx tailwindcss -i ./src/style.css -o ./public/style.css --watch"
+    "build": "NODE_ENV=production npx tailwindcss -i ./src/style.css -o ./docs/style.css --minify",
+    "dev": "NODE_ENV=production npx tailwindcss -i ./src/style.css -o ./docs/style.css --watch"
   },
   "keywords": [],
   "author": "",
