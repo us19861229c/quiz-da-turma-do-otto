@@ -15,7 +15,7 @@
 
 <body class="antialiased text-preto6 bg-gray-100">
   <div class="flex flex-col justify-center items-center h-screen bg-no-repeat bg-contain"
-    :class="passo === 8 ? 'bg-arvores':'bg-nuvens'" x-data="{itens, passo: 0, resultado:  $store.escolhas.resultado()}">
+    :class="passo === 8 ? 'bg-arvores':'bg-nuvens'" x-data="{itens, passo: 0, resultado}">
     <div class="w-full max-w-xl p-3">
       <header class="flex flex-col text-center items-center break-words" x-ref="inicio" x-show="passo === 0 ">
         <h1 class="text-6xl font-bold text-livros">Teste de Personalidade</h1>
@@ -46,7 +46,7 @@
         </section>
       </template>
 
-      <section class="rounded-xl text-center shadow overflow-hidden bg-gray-50" x-cloak x-show="passo === 8">
+      <section class="rounded-xl text-center shadow overflow-hidden bg-gray-50" x-show="passo === 8">
         <div class="py-4 px-6 border-t border-solid border-gray-200 flex justify-center"
           :style="`background-color: ${resultado.corFundo}`">
           <img :src="resultado.avatar" :style="`border-color: ${resultado.corBorda}`"
@@ -131,7 +131,7 @@
       }
     ]
 
-    const mascotes = [
+    const resultado = [
       {
         id: 'a',
         nome: 'Áli',
@@ -190,7 +190,7 @@
             return quantidadeEscolhas[b] - quantidadeEscolhas[a];
           })
 
-          return mascotes.filter(mascote => mascote.id === chavesObjetos[0])[0]
+          return resultado.filter(mascote => mascote.id === chavesObjetos[0])[0]
         },
       })
     })
